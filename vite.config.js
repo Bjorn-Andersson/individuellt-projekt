@@ -55,7 +55,13 @@ export default defineConfig({
               /https:\/\/pokeapi\.co\/api\/v2\/pokemon\/[0-9a-z-_.]+\/?/
           }
         ],
-        globPatterns: ['assets/**', 'index.html', 'manifest.webmanifest']
+        globPatterns: [
+          'assets/**',
+          'index.html',
+          'manifest.webmanifest',
+          'images/**',
+          'fonts/**'
+        ]
       }
     }),
     vue()
