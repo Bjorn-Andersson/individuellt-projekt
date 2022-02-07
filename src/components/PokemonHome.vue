@@ -23,7 +23,7 @@
       searchList() {
         this.displayList = 'none'
         this.pokeSearch = this.pokeSearch.toLowerCase()
-
+        this.errorMessage = null
         if (this.pokemonName.includes(this.pokeSearch)) {
           if (this.pokeSearch !== this.previousPokeSearch) {
             this.pokeDisplay =
@@ -49,17 +49,10 @@
       resetList() {
         this.displayList = 'inline'
         this.displayListFiletered = 'none'
-        this.pokeSearch = null
+        this.previousPokeSearch = null
         this.pokemonNameFiltered = []
         this.spriteList = []
         this.errorMessage = null
-      },
-      clearList() {
-        this.pokemonNameFiltered = []
-        this.spriteList = []
-        this.displayList = 'inline'
-        this.displayListFiletered = 'none'
-        this.previousPokeSearch = null
       }
     },
     computed: {
@@ -76,7 +69,7 @@
     },
     created() {
       this.axios
-        .get('https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0')
+        .get('https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0')
         .then(result => {
           this.pokemonUrl = result.data.results.map(({ url }) => url)
           this.pokemonData = this.pokemonUrl
@@ -103,7 +96,7 @@
       placeholder="Search Pokémon list"
       v-model="pokeSearch"
       @keyup.enter="searchList"
-      @keydown.delete="clearList"
+      @keydown.delete="resetList"
     />
     <input
       type="button"
@@ -111,14 +104,6 @@
       value="Submit"
       @click="searchList"
     />
-    <div class="resetButton">
-      <input
-        type="button"
-        class="inputButton btn btn-primary"
-        value="Reset list"
-        @click="resetList"
-      />
-    </div>
     <ol>
       <li
         :style="{ display: displayList }"
@@ -200,6 +185,7 @@
     width: 350px;
     height: 38px;
     margin-top: 10px;
+    margin-bottom: 25px;
     border: $pokeBorder;
   }
   .form-control {
