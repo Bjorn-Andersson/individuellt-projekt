@@ -14,16 +14,16 @@ poke100Hpbar = hp
 pokeCurrentHpBar = hp - damage
 (2 olika bars överlappande med olika z index och backgrundsfärg, transition: 0.3s ease)
 
-calculateExpenseProgress() {
-        const budget = 4000
-        const spent = 1000
-        const progress = (100 * spent) / budget
+calculathp() {
+        const hp = 4000
+        const dmg = 1000
+        const progress = (100 * dmg) / hp
         return progress + '%'
  -->
 <script>
   export default {
     data() {
-      return { toggleFrame: 'none' }
+      return { toggleFrame: 'display' }
     }
   }
 </script>
@@ -74,7 +74,7 @@ calculateExpenseProgress() {
     </div>
   </div>
 </template>
-<style>
+<style scoped>
   .outerFrame {
     margin-top: 20px;
     background-color: bisque;

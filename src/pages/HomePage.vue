@@ -5,8 +5,8 @@
     data() {
       return {
         pokemonData: null,
-        pokemonName: null,
-        visibility: 'none'
+        pokemonName: null
+        // visibility: 'none'
       }
     },
     components: {
@@ -30,18 +30,18 @@
       },
       getPokemonName(pokemonName) {
         this.pokemonName = pokemonName
-      },
-      showOrHideList() {
-        if (this.visibility !== 'flex') this.visibility = 'flex'
-        else this.visibility = 'none'
       }
+      // showOrHideList() {
+      //   if (this.visibility !== 'flex') this.visibility = 'flex'
+      //   else this.visibility = 'none'
+      // }
     }
   }
 </script>
 
 <template>
   <PokemonHome @pokemon-data="getPokemonData" @pokemon-name="getPokemonName" />
-  <div class="container">
+  <!-- <div class="container">
     <input
       type="button"
       class="button btn btn-primary"
@@ -53,7 +53,7 @@
         <a :href="pokemonData[index]" :text="pokemonNameCap[index]" />
       </li>
     </ol>
-  </div>
+  </div> -->
 </template>
 <style lang="scss" scoped>
   @import '../index.scss';

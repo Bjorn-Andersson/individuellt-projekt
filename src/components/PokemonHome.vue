@@ -69,7 +69,7 @@
     },
     created() {
       this.axios
-        .get('https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0')
+        .get('https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0')
         .then(result => {
           this.pokemonUrl = result.data.results.map(({ url }) => url)
           this.pokemonData = this.pokemonUrl
